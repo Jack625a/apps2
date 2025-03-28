@@ -7,17 +7,20 @@ import { StyleSheet, Text, View, Button,
   ActivityIndicator
 } from 'react-native';
 
+//Importar los iconos
+import {Ionicons} from '@expo/vector-icons'
+
 //Importacion de las dependencias
 //barra navegacion inferior
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 //contenedor para navegacion
 import {NavigationContainer} from '@react-navigation/native'
 //Importar las pantallas (screens)
-import {InicioScreen} from './screens/InicioScreen';
-import {ProductoScreen} from './screens/ProductoScreen';
-import {AjustesScreen} from './screens/AjustesScreen';
 
 
+import AjustesScreen from './screens/AjustesScreen';
+import InicioScreen from './screens/InicioScreen';
+import ProductoScreen from './screens/ProductoScreen';
 //Paso 2. crear la barra de naveagcion
 const Tab=createBottomTabNavigator();
 
@@ -26,10 +29,41 @@ export default function App() {
     //Paso 3. crear el contenedor de navegacion
    
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        screenOptions={({route})=>({
+          tabBarIcon:({
+            focused, color,size
+          })=>{
+            let iconoName;
+            if(route.name=="Inicio"){
+              iconoName= focused ? "home": "home-outline";
+            }else if(route.name=="Productos"){
+              iconoName=focused? "shop":"shop-outline"            
+            } else if(route.name=="Ajustes"){
+              iconoName=focused? "settings":"settings-outline"
+            }
+            return <Ionicons
+              name={iconoName}
+              size={size}
+              color={color}
+            />
+          },
+          tabBarActiveTintColor:'red', //color cuando esta activo
+          tabBarInactiveTintColor:'yellow', //Color cuando esta inactivo
+          tabBarStyle:{
+            backgroundColor:'#2E778B',
+            padding:10
+          }
+        })}
+>
+
+
+
+      
         <Tab.Screen
          name='Inicio'
          component={InicioScreen}
+         
          
         />
         <Tab.Screen
