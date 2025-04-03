@@ -107,7 +107,7 @@ const styles=StyleSheet.create({
         fontSize:16,
     },
     contenedor:{
-        flex:1,
+        
         padding:15
     }
 
