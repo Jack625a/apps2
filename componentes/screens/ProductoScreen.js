@@ -1,8 +1,9 @@
 //Importacion de dependencias
 import React, {useState,useEffect} from "react";
 //Componentes (Flatlist, Image)
-import { View,Text,FlatList,Image,StyleSheet, Button } from "react-native";
+import { View,Text,FlatList,Image,StyleSheet} from "react-native";
 import axios from "axios";
+import { Button } from "react-native-paper";
 
 const token= "patzox8huKGcf2Ttp.5a95cd3b9862d7087099ce2d4a63717bd1d53b9c59eda2fd6dbfb8453ab66c2e"
 const idBaseDatos= "appZ01xbGIuDfPpDv";
@@ -68,6 +69,10 @@ return(
         <Text style={styles.subtitulo}>
             {precio}
         </Text>
+        <Button mode="contained-tonal" onPress={()=>console.log("boton ingresado")}>
+            Prueba
+        </Button>
+        <p>{id}</p>
 
     </View>
 
